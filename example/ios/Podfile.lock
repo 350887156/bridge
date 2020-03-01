@@ -1,0 +1,33 @@
+PODS:
+  - bridge (0.0.1):
+    - Flutter
+    - GTMBase64
+    - SAMKeychain
+  - Flutter (1.0.0)
+  - GTMBase64 (1.0.1)
+  - SAMKeychain (1.5.3)
+
+DEPENDENCIES:
+  - bridge (from `.symlinks/plugins/bridge/ios`)
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  trunk:
+    - GTMBase64
+    - SAMKeychain
+
+EXTERNAL SOURCES:
+  bridge:
+    :path: ".symlinks/plugins/bridge/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  bridge: e2b6e651efb1e132bd77cd132227050d1ff6c261
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+
+PODFILE CHECKSUM: 3dbe063e9c90a5d7c9e4e76e70a821b9e2c1d271
+
+COCOAPODS: 1.8.4
