@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/services.dart';
 import 'package:bridge/bridge.dart';
 
@@ -17,28 +16,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    requestPermission();
     initPlatformState();
   }
-  Future requestPermission() async {
-    // 申请权限
 
-    Map<PermissionGroup, PermissionStatus> permissions =
-
-    await PermissionHandler().requestPermissions([PermissionGroup.phone,PermissionGroup.storage]);
-
-    // 申请结果
-
-    PermissionStatus permission =
-
-    await PermissionHandler().checkPermissionStatus(PermissionGroup.phone);
-
-    if (permission == PermissionStatus.granted) {
-      print('权限申请通过');
-    } else {
-      print('权限申请被拒绝');
-    }
-  }
 
     // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {

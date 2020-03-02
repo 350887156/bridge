@@ -1,8 +1,7 @@
 name: bridge
 description: Flutter Bridge.
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/350887156/bridge
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -10,8 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  permission_handler: ^4.2.0+hotfix.3
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
