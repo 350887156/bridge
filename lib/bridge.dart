@@ -10,6 +10,7 @@ class Bridge {
     final String version = await _channel.invokeMethod('getUDID');
     return version;
   }
+
   static Future<String> encrypt(String target,String key) async {
     final String result = await _channel.invokeMethod('encrypt',
         {
@@ -24,6 +25,12 @@ class Bridge {
           'target':target,
           'key':key
         });
+    return result;
+  }
+
+  // ignore: missing_return
+  static Future<bool> get isSimulator async {
+    final result = await _channel.invokeMethod('isSimulator');
     return result;
   }
 }

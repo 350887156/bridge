@@ -12,6 +12,7 @@ import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import com.lajiaoyang.app.bridge.AESCryptor;
 import com.lajiaoyang.app.bridge.DeviceTools;
+import com.lajiaoyang.app.bridge.SimulatorUtil;
 /** BridgePlugin */
 public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
   private  static  Context context;
@@ -56,6 +57,9 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
       } else {
         result.success(udid);
       }
+    } else if ("isSimulator".equals(call.method)) {
+      boolean isSimulator = SimulatorUtil.isSimulator(context);
+      result.success(isSimulator);
     } else {
       result.notImplemented();
     }

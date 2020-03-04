@@ -38,6 +38,11 @@
         }
         result(udid);
         
+    } else if ([@"isSimulator" isEqualToString:call.method]) {
+        
+        BOOL isSimulator = TARGET_IPHONE_SIMULATOR == 1;
+        result(@(isSimulator));
+        
     } else {
         result(FlutterMethodNotImplemented);
     }
