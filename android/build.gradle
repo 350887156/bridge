@@ -5,6 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 
     dependencies {
@@ -16,6 +17,7 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/umsdk/release'}
     }
 }
 
@@ -35,4 +37,7 @@ android {
 dependencies {
     implementation files('libs/bcprov-jdk16-1.45.jar')
     implementation files('libs/commons-codec-1.1.jar')
+    api  'com.umeng.umsdk:analytics:8.0.0'
+    api  'com.umeng.umsdk:common:2.0.0'
+
 }

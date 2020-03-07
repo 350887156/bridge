@@ -22,10 +22,10 @@ class _MyAppState extends State<MyApp> {
 
     // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    final result = await Bridge.isSimulator;
-
+    Bridge.enabledUmengLog();
+    Bridge.initUMeng('5e634c84895cca30fb0000b8','5e63435b0cafb2f5a400013f');
     setState(() {
-      isSimulator = result;
+      isSimulator = true;
     });
   }
 

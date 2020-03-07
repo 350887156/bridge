@@ -1,7 +1,6 @@
 package com.lajiaoyang.app.bridge;
 
 import android.content.Context;
-
 import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
@@ -13,6 +12,8 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 import com.lajiaoyang.app.bridge.AESCryptor;
 import com.lajiaoyang.app.bridge.DeviceTools;
 import com.lajiaoyang.app.bridge.SimulatorUtil;
+import com.umeng.commonsdk.UMConfigure;
+
 /** BridgePlugin */
 public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
   private  static  Context context;
@@ -60,9 +61,24 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
     } else if ("isSimulator".equals(call.method)) {
       boolean isSimulator = SimulatorUtil.isSimulator(context);
       result.success(isSimulator);
+
+    } else if (call.method.startsWith("UMConfigure")) {
+      handleUMConfigure(call,result);
     } else {
       result.notImplemented();
     }
+  }
+  /// 友盟 SDK处理
+  private void handleUMConfigure(@NonNull MethodCall call, @NonNull Result result) {
+    if ("UMConfigure.init".equals(call.method)) {
+      String appKey = call.argument("androidAppKey");
+      UMConfigure.init(context,appKey,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
+    } else if("UMConfigure.log".equals(call.method)) {
+      UMConfigure.setLogEnabled(true);
+    } else {
+      result.notImplemented();
+    }
+
   }
 
   @Override

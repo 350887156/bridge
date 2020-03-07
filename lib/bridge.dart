@@ -33,4 +33,14 @@ class Bridge {
     final result = await _channel.invokeMethod('isSimulator');
     return result;
   }
+  static initUMeng(String iOSAppKey,String androidAppKey) async {
+    await _channel.invokeMethod('UMConfigure.init',
+        {
+          'iOSAppKey':iOSAppKey,
+          'androidAppKey':androidAppKey
+        });
+  }
+  static enabledUmengLog() async {
+    await _channel.invokeMethod('UMConfigure.log');
+  }
 }

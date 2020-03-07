@@ -1,6 +1,7 @@
 #import "BridgePlugin.h"
 #import "GTMBase64+Extension.h"
 #import "SAMKeychain.h"
+#import <UMCommon/UMCommon.h>
 @implementation BridgePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
@@ -43,9 +44,23 @@
         BOOL isSimulator = TARGET_IPHONE_SIMULATOR == 1;
         result(@(isSimulator));
         
+    } else if ([call.method hasPrefix:@"UMConfigure"]) {
+        [self handleUMeng:call result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
+}
+- (void)handleUMeng:(FlutterMethodCall*)call result:(FlutterResult)result {
+    if ([@"UMConfigure.init" isEqualToString:call.method]) {
+        NSString *appKey = call.arguments[@"iOSAppKey"];
+        [UMConfigure initWithAppkey:appKey channel:@"App Store"];
+    } else if ([@"UMConfigure.log" isEqualToString:call.method]) {
+        [UMConfigure setLogEnabled:YES];
+    }
+    else {
+        result(FlutterMethodNotImplemented);
+    }
+    
 }
 
 @end
