@@ -41,7 +41,10 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if ("encrypt".equals(call.method)) {
+    if (call.method.equals("getPlatformVersion")) {
+      String version = android.os.Build.VERSION.RELEASE;
+      result.success(version);
+    } else if ("encrypt".equals(call.method)) {
       String key = call.argument("key");
       String target = call.argument("target");
       String decrypt = AESCryptor.encrypt(target,key);

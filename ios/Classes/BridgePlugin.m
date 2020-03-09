@@ -12,7 +12,9 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    if ([@"encrypt" isEqualToString:call.method]) {
+    if ([@"getPlatformVersion" isEqualToString:call.method]) {
+        result([[UIDevice currentDevice] systemVersion]);
+    } else if ([@"encrypt" isEqualToString:call.method]) {
         NSString *key = call.arguments[@"key"];
         NSString *target = call.arguments[@"target"];
         if ([target isKindOfClass:[NSString class]] && target.length && [key isKindOfClass:[NSString class]] && key.length) {
