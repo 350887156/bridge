@@ -43,8 +43,12 @@ class Bridge {
   static enabledUmengLog() async {
     await _channel.invokeMethod('UMConfigure.log');
   }
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String> get versionName async {
+    final String version = await _channel.invokeMethod('getVersionName');
+    return version;
+  }
+  static Future<String> get versionCode async {
+    final String version = await _channel.invokeMethod('getVersionCode');
     return version;
   }
 }
