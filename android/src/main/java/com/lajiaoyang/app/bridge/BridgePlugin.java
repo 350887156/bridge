@@ -1,6 +1,9 @@
 package com.lajiaoyang.app.bridge;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+
 import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
@@ -41,9 +44,29 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      String version = android.os.Build.VERSION.RELEASE;
-      result.success(version);
+    if (call.method.equals("getVersionCode")) {
+      int versionCode = 0;
+      try {
+        PackageManager packageManager = context.getPackageManager();
+        PackageInfo packageInfo = packageManager.getPackageInfo(
+                context.getPackageName(), 0);
+        versionCode = packageInfo.versionCode;
+        result.success(versionCode);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+    } else if (call.method.equals("getVersionName")) {
+      String versionName = "";
+      try {
+        PackageManager packageManager = context.getPackageManager();
+        PackageInfo packageInfo = packageManager.getPackageInfo(
+                context.getPackageName(), 0);
+        versionName = packageInfo.versionName;
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+      result.success(versionName);
     } else if ("encrypt".equals(call.method)) {
       String key = call.argument("key");
       String target = call.argument("target");

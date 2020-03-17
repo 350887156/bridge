@@ -12,8 +12,15 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    if ([@"getPlatformVersion" isEqualToString:call.method]) {
-        result([[UIDevice currentDevice] systemVersion]);
+    if ([@"getVersionCode" isEqualToString:call.method]) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *appVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
+        NSNumber *version = @(appVersion.integerValue);
+        result(version);
+    } else if ([@"getVersionName" isEqualToString:call.method]) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        result(appVersion);
     } else if ([@"encrypt" isEqualToString:call.method]) {
         NSString *key = call.arguments[@"key"];
         NSString *target = call.arguments[@"target"];
