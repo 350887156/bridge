@@ -88,7 +88,7 @@
 }
 - (void)_showUpdateAlertController:(BPVersionModel *)model result:(FlutterResult)result {
     NSInteger version = [self _getVersion];
-    if (model.versionCode < version) {
+    if (model.versionCode >= version) {
         result(@(NO));
         return;
     }

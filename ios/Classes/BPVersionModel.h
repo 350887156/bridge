@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BPVersionModel : NSObject
 @property (nonatomic, copy) NSString *version;
 @property (nonatomic, assign) NSInteger versionCode;
+@property (nonatomic, assign) NSInteger type;
 @property (nonatomic, copy) NSString *apkUrl;
 @property (nonatomic, copy) NSString *channelId;
 @property (nonatomic, copy) NSString *channelName;
