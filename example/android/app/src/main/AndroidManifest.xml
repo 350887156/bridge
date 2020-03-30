@@ -13,6 +13,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="bridge_example"
         android:icon="@mipmap/ic_launcher">
+        android:networkSecurityConfig="@xml/network_security_config"
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

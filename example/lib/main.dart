@@ -16,18 +16,19 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-//    checkUpdate();
+    checkUpdate();
   }
 
   void checkUpdate() async {
-    print('checkUpdate');
     Map <String,dynamic> parameter = {};
     if (Platform.isIOS) {
       parameter['platform'] = 'ios';
     } else if (Platform.isAndroid) {
       parameter['platform'] = 'android';
     }
-    await Bridge.checkUpdate(url: 'http://182.92.172.156:8085/hhc/app/getAppInfo',parameter: parameter);
+    print('开始请求');
+    final result = await Bridge.checkUpdate(url: 'http://182.92.172.156:8085/hhc/app/getAppInfo',parameter: parameter);
+    print('升级结果'+ result.toString());
   }
 
     // Platform messages are asynchronous, so we initialize in an async method.
