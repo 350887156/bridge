@@ -6,7 +6,10 @@
 //
 
 #import "BPVersionModel.h"
-
+#import <MJExtension/MJExtension.h>
 @implementation BPVersionModel
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"desc":@"description"};
+}
 @end

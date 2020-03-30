@@ -93,7 +93,7 @@
         return;
     }
     UIApplication *application = [UIApplication sharedApplication];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"检测到新版本,立即前往更新" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:model.desc preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSURL *url = [NSURL URLWithString:model.apkUrl];
         if (![url isKindOfClass:[NSURL class]]) {
