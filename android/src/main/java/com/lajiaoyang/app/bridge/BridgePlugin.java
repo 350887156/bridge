@@ -98,8 +98,6 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
           updateManager.setup(url,parameter).startCheck();
         } catch (Exception e) {
           e.printStackTrace();
-      } else {
-        result.error("-1","url error","url error");
       }
     } else {
       result.notImplemented();
