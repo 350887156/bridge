@@ -88,12 +88,12 @@
 }
 - (void)_showUpdateAlertController:(BPVersionModel *)model result:(FlutterResult)result {
     NSInteger version = [self _getVersion];
-    if (model.versionCode >= version) {
+    if (model.versionCode <= version) {
         result(@(NO));
         return;
     }
     UIApplication *application = [UIApplication sharedApplication];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:model.desc preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您有新的版本需要更新" message:model.desc preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSURL *url = [NSURL URLWithString:model.apkUrl];
         if (![url isKindOfClass:[NSURL class]]) {
@@ -109,6 +109,9 @@
         } else {
             [application openURL:url];
         }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            exit(0);
+        });
         result(@(YES));
     }];
     [alert addAction:action];
