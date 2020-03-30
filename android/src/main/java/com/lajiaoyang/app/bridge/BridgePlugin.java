@@ -10,12 +10,12 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
-import com.lajiaoyang.app.bridge.AESCryptor;
-import com.lajiaoyang.app.bridge.DeviceTools;
-import com.lajiaoyang.app.bridge.SimulatorUtil;
 import com.umeng.commonsdk.UMConfigure;
+
+import org.lzh.framework.updatepluginlib.model.Update;
+
+import java.util.Map;
 
 /** BridgePlugin */
 public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
@@ -90,6 +90,24 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
 
     } else if (call.method.startsWith("UMConfigure")) {
       handleUMConfigure(call,result);
+    } else if ("checkUpdate".equals(call.method)) {
+      String url = call.argument("url");
+      Map parameter = call.argument("parameter");
+      if (url.startsWith("http")) {
+        UpdateManager updateManager = UpdateManager.getInstance();
+        if (updateManager.isLatestVersion()) {
+          result.success(true);
+        } else {
+          try {
+            updateManager.setup(url,parameter).startCheck();
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+          result.success(false);
+        }
+      } else {
+        result.error("-1","url error","url error");
+      }
     } else {
       result.notImplemented();
     }

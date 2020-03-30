@@ -51,4 +51,15 @@ class Bridge {
     final String version = await _channel.invokeMethod('getVersionCode');
     return version;
   }
+  /*
+  * App检查更新
+  * */
+  static Future<bool> checkUpdate({String url,Map<String,dynamic> parameter}) async {
+    bool result = await _channel.invokeMethod('checkUpdate',
+        {
+          'url':url,
+          'parameter':parameter
+        });
+    return result;
+  }
 }

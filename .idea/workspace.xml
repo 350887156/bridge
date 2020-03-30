@@ -7,9 +7,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="390bdd13-43bd-4b31-afeb-5dd9519ce966" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/AppInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/Checker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/GsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/UpdateManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/AppInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/Checker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/GsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/UpdateManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPNetworkManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPNetworkManager.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPVersionModel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPVersionModel.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/BPNetworkManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/BPNetworkManager.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/BPVersionModel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/BPVersionModel.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/bridge.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/bridge.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/bridge.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/bridge.podspec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bridge.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +54,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="MQS0219621017986" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>

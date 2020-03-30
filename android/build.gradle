@@ -18,6 +18,7 @@ rootProject.allprojects {
         google()
         jcenter()
         maven { url 'https://dl.bintray.com/umsdk/release'}
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -37,7 +38,9 @@ android {
 dependencies {
     implementation files('libs/bcprov-jdk16-1.45.jar')
     implementation files('libs/commons-codec-1.1.jar')
+    implementation 'com.github.yjfnypeu:UpdatePlugin:3.0.1'
     api  'com.umeng.umsdk:analytics:8.0.0'
     api  'com.umeng.umsdk:common:2.0.0'
+    api 'com.google.code.gson:gson:2.8.5'
 
 }
