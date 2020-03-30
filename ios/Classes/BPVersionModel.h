@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *channelId;
 @property (nonatomic, copy) NSString *channelName;
 @property (nonatomic, copy) NSString *platform;
+@property (nonatomic, copy) NSString *desc;
 @end
 
 NS_ASSUME_NONNULL_END
