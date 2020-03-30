@@ -94,16 +94,11 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
       String url = call.argument("url");
       Map parameter = call.argument("parameter");
       if (url.startsWith("http")) {
-        UpdateManager updateManager = UpdateManager.getInstance();
-        if (updateManager.isLatestVersion()) {
-          result.success(true);
-        } else {
-          try {
-            updateManager.setup(url,parameter).startCheck();
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
-          result.success(false);
+        try {
+          UpdateManager updateManager = UpdateManager.getInstance();
+          updateManager.setup(url,parameter).startCheck();
+        } catch (Exception e) {
+          e.printStackTrace();
         }
       } else {
         result.error("-1","url error","url error");
