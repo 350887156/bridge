@@ -16,19 +16,20 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    print('initState');
+//    checkUpdate();
+  }
+  @override
+  void reassemble() {
+    // TODO: implement reassemble
+    super.reassemble();
     checkUpdate();
   }
-
   void checkUpdate() async {
-    Map <String,dynamic> parameter = {};
-    if (Platform.isIOS) {
-      parameter['platform'] = 'ios';
-    } else if (Platform.isAndroid) {
-      parameter['platform'] = 'android';
-    }
-    print('开始请求');
-    final result = await Bridge.checkUpdate(url: 'http://182.92.172.156:8085/hhc/app/getAppInfo',parameter: parameter);
-    print('升级结果'+ result.toString());
+    print('checkUpdate');
+    bool result = await Bridge.showSplashAd(appId: '1105344611', placementId: '9040714184494018', backgroundImage: 'assets://img/launch.png');
+//    bool result = await Bridge.showRewardVideoAd(appId: '1105344611', placementId: '8020744212936426');
+    print(result? '----------chenggong--------------':'------------shibai-----------------');
   }
 
     // Platform messages are asynchronous, so we initialize in an async method.
@@ -39,10 +40,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('isSimulator Test'),
+          title: const Text('isSimulator '),
         ),
         body: Center(
-          child: Text(isSimulator == true ? '模拟器' :'真机'),
+          child: Text(isSimulator == true ? '模拟器' :'真真是机'),
         ),
       ),
     );

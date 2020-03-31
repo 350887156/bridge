@@ -11,7 +11,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="390bdd13-43bd-4b31-afeb-5dd9519ce966" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/libs/open_sdk_r7f9df38_lite.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/img/launch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/libs/open_sdk_r7f9df38_lite.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/img/launch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPAdHandler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPAdHandler.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/BPAdHandler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/BPAdHandler.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/GTMBase64+Extension.h" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/GTMBase64+Extension.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/GTMBase64+Extension.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/GTMBase64+Extension.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bridge.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +42,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="MQS0219621017986" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_4_API_29" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -29,7 +52,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/example/img" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -37,6 +60,9 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/example/img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/android/libs" />
     </key>

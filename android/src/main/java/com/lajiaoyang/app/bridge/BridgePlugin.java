@@ -12,7 +12,6 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import com.umeng.commonsdk.UMConfigure;
-
 import org.lzh.framework.updatepluginlib.model.Update;
 
 import java.util.Map;

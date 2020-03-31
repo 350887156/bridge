@@ -5,17 +5,24 @@
 #import "BPNetworkManager.h"
 #import "BPVersionModel.h"
 #import <MJExtension/MJExtension.h>
-
+#import "BPAdHandler.h"
 @interface BridgePlugin()
 @property (nonatomic, assign) FlutterResult saveImageResult;
+@property (nonatomic, strong) BPAdHandler *adHandler;
 @end
 @implementation BridgePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
       methodChannelWithName:@"bridge"
             binaryMessenger:[registrar messenger]];
-  BridgePlugin* instance = [[BridgePlugin alloc] init];
+  BridgePlugin* instance = [[BridgePlugin alloc] initWithRegistrar:registrar methodChannel:channel];
   [registrar addMethodCallDelegate:instance channel:channel];
+}
+- (instancetype)initWithRegistrar:(NSObject <FlutterPluginRegistrar> *)registrar methodChannel:(FlutterMethodChannel *)flutterMethodChannel {
+    if (self = [super init]) {
+        self.adHandler = [[BPAdHandler alloc] initWithMethodChannel:flutterMethodChannel];
+    }
+    return self;
 }
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"getVersionCode" isEqualToString:call.method]) {
@@ -77,7 +84,10 @@
                 }
             }
         }];
-    } else {
+    } else if ([call.method hasPrefix:@"advertisement"]) {
+        [self.adHandler handleMethodCall:call result:result];
+    }
+    else {
         result(FlutterMethodNotImplemented);
     }
 }
