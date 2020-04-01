@@ -11,29 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="390bdd13-43bd-4b31-afeb-5dd9519ce966" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/android/libs/open_sdk_r7f9df38_lite.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/img/launch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/libs/open_sdk_r7f9df38_lite.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/img/launch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPAdHandler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BPAdHandler.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/BPAdHandler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/BPAdHandler.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/GTMBase64+Extension.h" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/GTMBase64+Extension.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/BPAdHandler.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/BPAdHandler.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/GTMBase64+Extension.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/GTMBase64+Extension.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/bridge.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/bridge.podspec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bridge.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,7 +107,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/src/main/java/com/lajiaoyang/app/bridge/BridgePlugin.java</url>
-          <line>47</line>
+          <line>46</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

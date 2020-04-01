@@ -21,7 +21,7 @@ Flutter Bridge.
   s.dependency 'UMCCommon'
   s.dependency 'UMCAnalytics'
   s.dependency 'AFNetworking'
-  s.dependency 'GDTMobSDK'
+#  s.dependency 'GDTMobSDK'
   s.dependency 'MJExtension'
   s.platform = :ios, '8.0'
 
