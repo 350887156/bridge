@@ -26,10 +26,6 @@ class _MyAppState extends State<MyApp> {
     checkUpdate();
   }
   void checkUpdate() async {
-    print('checkUpdate');
-    bool result = await Bridge.showSplashAd(appId: '1105344611', placementId: '9040714184494018', backgroundImage: 'assets://img/launch.png');
-//    bool result = await Bridge.showRewardVideoAd(appId: '1105344611', placementId: '8020744212936426');
-    print(result? '----------chenggong--------------':'------------shibai-----------------');
   }
 
     // Platform messages are asynchronous, so we initialize in an async method.

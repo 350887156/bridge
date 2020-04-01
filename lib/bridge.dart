@@ -62,39 +62,39 @@ class Bridge {
         });
     return result;
   }
-  /*
-  * 开屏广告准备
-  * */
-  static Future<bool> preloadSplash({@required String appId,@required String placementId}) async {
-    bool result = await _channel.invokeMethod('advertisement.preloadSplash',
-        {
-          'appId':appId,
-          'placementId':placementId,
-        });
-    return result;
-  }
-  /*
-  * 展示开屏广告
-  * */
-  static Future<bool> showSplashAd({@required String appId,@required String placementId,@required String backgroundImage}) async {
-    print('start');
-    bool result = await _channel.invokeMethod('advertisement.aplashAd',
-        {
-          'appId':appId,
-          'placementId':placementId,
-          'backgroundImage':backgroundImage
-        });
-    return result;
-  }
-  /*
-  * 播放激励视频
-  * */
-  static Future<bool> showRewardVideoAd({@required String appId,@required String placementId}) async {
-    bool result = await _channel.invokeMethod('advertisement.rewardVideoAd',
-        {
-          'appId':appId,
-          'placementId':placementId,
-        });
-    return result;
-  }
+//  /*
+//  * 开屏广告准备
+//  * */
+//  static Future<bool> preloadSplash({@required String appId,@required String placementId}) async {
+//    bool result = await _channel.invokeMethod('advertisement.preloadSplash',
+//        {
+//          'appId':appId,
+//          'placementId':placementId,
+//        });
+//    return result;
+//  }
+//  /*
+//  * 展示开屏广告
+//  * */
+//  static Future<bool> showSplashAd({@required String appId,@required String placementId,@required String backgroundImage}) async {
+//    print('start');
+//    bool result = await _channel.invokeMethod('advertisement.aplashAd',
+//        {
+//          'appId':appId,
+//          'placementId':placementId,
+//          'backgroundImage':backgroundImage
+//        });
+//    return result;
+//  }
+//  /*
+//  * 播放激励视频
+//  * */
+//  static Future<bool> showRewardVideoAd({@required String appId,@required String placementId}) async {
+//    bool result = await _channel.invokeMethod('advertisement.rewardVideoAd',
+//        {
+//          'appId':appId,
+//          'placementId':placementId,
+//        });
+//    return result;
+//  }
 }

@@ -85,7 +85,8 @@
             }
         }];
     } else if ([call.method hasPrefix:@"advertisement"]) {
-        [self.adHandler handleMethodCall:call result:result];
+//        [self.adHandler handleMethodCall:call result:result];
+        result(FlutterMethodNotImplemented);
     }
     else {
         result(FlutterMethodNotImplemented);
