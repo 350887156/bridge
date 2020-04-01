@@ -125,6 +125,12 @@
         });
         result(@(YES));
     }];
+    if (model.type == 0) {
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alert addAction:cancel];
+    }
     [alert addAction:action];
     [application.keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
 }
