@@ -17,18 +17,18 @@ PODS:
   - bridge (0.0.1):
     - AFNetworking
     - Flutter
-    - GDTMobSDK
     - GTMBase64
+    - Masonry
     - MJExtension
+    - pop
     - SAMKeychain
     - UMCAnalytics
     - UMCCommon
   - Flutter (1.0.0)
-  - GDTMobSDK (4.10.10):
-    - GDTMobSDK/GDTMobSDK (= 4.10.10)
-  - GDTMobSDK/GDTMobSDK (4.10.10)
   - GTMBase64 (1.0.1)
+  - Masonry (1.1.0)
   - MJExtension (3.2.1)
+  - pop (1.0.12)
   - SAMKeychain (1.5.3)
   - UMCAnalytics (6.0.5):
     - UMCCommon
@@ -41,9 +41,10 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - GDTMobSDK
     - GTMBase64
+    - Masonry
     - MJExtension
+    - pop
     - SAMKeychain
     - UMCAnalytics
     - UMCCommon
@@ -56,11 +57,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  bridge: d9856cc1f4414138a4e25850ba922010413b2367
+  bridge: bee7a00aed4c4046791a0532a53a211222786deb
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  GDTMobSDK: 374d0d956687ed5e2eb96ff98d3b5d814074b255
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   UMCAnalytics: 045be2cd1ec05aa95ad62405a850757f932e2d59
   UMCCommon: 971f324a5a99c9d662ae040a815e7e3d7ef8b2a8

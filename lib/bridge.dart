@@ -54,11 +54,12 @@ class Bridge {
   /*
   * App检查更新
   * */
-  static Future<bool> checkUpdate({String url,Map<String,dynamic> parameter}) async {
+  static Future<bool> checkUpdate({String url,Map<String,dynamic> parameter,Map<String,dynamic> resource}) async {
     bool result = await _channel.invokeMethod('checkUpdate',
         {
           'url':url,
-          'parameter':parameter
+          'parameter':parameter,
+          'resource':resource
         });
     return result;
   }

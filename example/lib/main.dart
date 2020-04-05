@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     print('initState');
-//    checkUpdate();
+    checkUpdate();
   }
   @override
   void reassemble() {
@@ -26,6 +26,15 @@ class _MyAppState extends State<MyApp> {
     checkUpdate();
   }
   void checkUpdate() async {
+    Map <String,dynamic> parameter = {};
+    if (Platform.isAndroid) {
+      parameter['platform'] = 'android';
+    } else if(Platform.isIOS) {
+      parameter['platform'] = 'ios';
+    }
+    await Bridge.checkUpdate(
+        url:'http://182.92.172.156:8085/hhc/app/getAppInfo',
+        parameter: parameter);
   }
 
     // Platform messages are asynchronous, so we initialize in an async method.
