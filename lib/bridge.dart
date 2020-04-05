@@ -47,8 +47,8 @@ class Bridge {
     final String version = await _channel.invokeMethod('getVersionName');
     return version;
   }
-  static Future<String> get versionCode async {
-    final String version = await _channel.invokeMethod('getVersionCode');
+  static Future<int> get versionCode async {
+    final int version = await _channel.invokeMethod('getVersionCode');
     return version;
   }
   /*

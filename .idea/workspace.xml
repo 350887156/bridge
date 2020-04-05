@@ -11,74 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="390bdd13-43bd-4b31-afeb-5dd9519ce966" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/example/img/cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/img/update.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/img/update_btn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/img/cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/img/update.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/img/update_btn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/update/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/update/cancel.imageset/cancel@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/update/update.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/update/update.imageset/update@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/update/update_btn.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/update/update_btn.imageset/update_btn@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/UpdateDialog/BPTransitionAnimation.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/UpdateDialog/BPTransitionAnimation.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/UpdateDialog/BPUpdateDialog.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/UpdateDialog/BPUpdateDialog.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/UpdateDialog/BPUpdateDialogContainer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/UpdateDialog/BPUpdateDialogContainer.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/update/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/update/cancel.imageset/cancel@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/update/update.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/update/update.imageset/update@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/update/update_btn.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/update/update_btn.imageset/update_btn@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/UpdateDialog/BPTransitionAnimation.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/UpdateDialog/BPTransitionAnimation.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/UpdateDialog/BPUpdateDialog.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/UpdateDialog/BPUpdateDialog.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/UpdateDialog/BPUpdateDialogContainer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/UpdateDialog/BPUpdateDialogContainer.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bridge.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/img/launch.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/bridge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/bridge.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/img/launch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/AppDelegate.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/update/cancel.imageset/Contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/example/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/Classes/BridgePlugin.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/bridge.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/ios/bridge.podspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/lib/bridge.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/bridge/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/update/cancel.imageset/Contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/BridgePlugin.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/bridge.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/bridge.podspec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bridge.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +21,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_4_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="MQS0219621017986" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>

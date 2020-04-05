@@ -27,7 +27,7 @@
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"getVersionCode" isEqualToString:call.method]) {
         NSNumber *version = @([self _getVersion]);
-        result(version.stringValue);
+        result(version);
     } else if ([@"getVersionName" isEqualToString:call.method]) {
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
