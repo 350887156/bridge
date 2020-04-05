@@ -23,6 +23,8 @@ Flutter Bridge.
   s.dependency 'AFNetworking'
 #  s.dependency 'GDTMobSDK'
   s.dependency 'MJExtension'
+  s.dependency 'pop'
+  s.dependency 'Masonry'
   s.platform = :ios, '8.0'
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
