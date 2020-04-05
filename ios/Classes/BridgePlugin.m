@@ -6,7 +6,6 @@
 #import "BPVersionModel.h"
 #import <MJExtension/MJExtension.h>
 #import "BPAdHandler.h"
-#import "BPUpdateDialog.h"
 @interface BridgePlugin()
 @property (nonatomic, assign) FlutterResult saveImageResult;
 @property (nonatomic, strong) BPAdHandler *adHandler;
@@ -103,38 +102,36 @@
         result(@(NO));
         return;
     }
-    [BPUpdateDialog showDialogWithDesc:model.desc showCancelButton:model.type == 0 downloadURL:model.apkUrl];
-    return;
-//    UIApplication *application = [UIApplication sharedApplication];
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您有新的版本需要更新" message:model.desc preferredStyle:UIAlertControllerStyleAlert];
-//    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        NSURL *url = [NSURL URLWithString:model.apkUrl];
-//        if (![url isKindOfClass:[NSURL class]]) {
-//            result(@(NO));
-//            return;
-//        }
-//        if (![application canOpenURL:url]) {
-//            result(@(NO));
-//            return;
-//        }
-//        if (@available(iOS 10.0, *)) {
-//            [application openURL:url options:@{} completionHandler:nil];
-//        } else {
-//            [application openURL:url];
-//        }
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            exit(0);
-//        });
-//        result(@(YES));
-//    }];
-//    if (model.type == 0) {
-//        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [alert dismissViewControllerAnimated:YES completion:nil];
-//        }];
-//        [alert addAction:cancel];
-//    }
-//    [alert addAction:action];
-//    [application.keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+    UIApplication *application = [UIApplication sharedApplication];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您有新的版本需要更新" message:model.desc preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *url = [NSURL URLWithString:model.apkUrl];
+        if (![url isKindOfClass:[NSURL class]]) {
+            result(@(NO));
+            return;
+        }
+        if (![application canOpenURL:url]) {
+            result(@(NO));
+            return;
+        }
+        if (@available(iOS 10.0, *)) {
+            [application openURL:url options:@{} completionHandler:nil];
+        } else {
+            [application openURL:url];
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            exit(0);
+        });
+        result(@(YES));
+    }];
+    if (model.type == 0) {
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alert addAction:cancel];
+    }
+    [alert addAction:action];
+    [application.keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 - (void)_handleUMeng:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"UMConfigure.init" isEqualToString:call.method]) {
