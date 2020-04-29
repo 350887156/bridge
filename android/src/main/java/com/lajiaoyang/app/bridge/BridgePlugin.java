@@ -71,7 +71,10 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
       String target = call.argument("target");
       try {
         String decrypt = AESCryptor.encrypt(target,key);
-        result.success(decrypt);
+        if (decrypt != null) {
+          result.success(decrypt);
+        }
+        
       } catch(Exception e) {
         e.printStackTrace();
       }
@@ -80,7 +83,9 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
       String target = call.argument("target");
       try {
         String decrypt = AESCryptor.decrypt(target,key);
-        result.success(decrypt);
+        if (decrypt != null) {
+          result.success(decrypt);
+        }
       } catch(Exception e) {
         e.printStackTrace();
       }
