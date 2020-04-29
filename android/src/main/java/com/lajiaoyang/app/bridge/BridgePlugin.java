@@ -69,13 +69,21 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
     } else if ("encrypt".equals(call.method)) {
       String key = call.argument("key");
       String target = call.argument("target");
-      String decrypt = AESCryptor.encrypt(target,key);
-      result.success(decrypt);
+      try {
+        String decrypt = AESCryptor.encrypt(target,key);
+        result.success(decrypt);
+      } catch(Exception e) {
+        e.printStackTrace();
+      }
     } else if ("decrypt".equals(call.method)) {
       String key = call.argument("key");
       String target = call.argument("target");
-      String decrypt = AESCryptor.decrypt(target,key);
-      result.success(decrypt);
+      try {
+        String decrypt = AESCryptor.decrypt(target,key);
+        result.success(decrypt);
+      } catch(Exception e) {
+        e.printStackTrace();
+      }
     } else if ("getUDID".equals(call.method)) {
       String udid = DeviceTools.getDeviceId(context);;
       if (udid == null) {
