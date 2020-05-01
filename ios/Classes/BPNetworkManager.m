@@ -26,7 +26,7 @@ static BPNetworkManager *_instance;
           parameter:(NSDictionary *)parameter
     complationBlock:(BPNetworkManagerComplationBlock)complationBlock
 {
-    [[BPNetworkManager sharedManager].sessionManager POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[BPNetworkManager sharedManager].sessionManager POST:url parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (complationBlock) {
             complationBlock(responseObject,nil);
         }
@@ -35,5 +35,6 @@ static BPNetworkManager *_instance;
             complationBlock(nil,error);
         }
     }];
+
 }
 @end
