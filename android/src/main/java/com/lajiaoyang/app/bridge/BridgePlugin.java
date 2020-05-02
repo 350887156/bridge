@@ -43,7 +43,16 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getVersionCode")) {
+    if (call.method.equals("getDeviceInfo")) {
+      try {
+         Map deviceInfo = DeviceTools.getDeviceInfo(context);
+         if (deviceInfo != null) {
+           result.success(deviceInfo);
+         }
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (call.method.equals("getVersionCode")) {
       int versionCode = 0;
       try {
         PackageManager packageManager = context.getPackageManager();

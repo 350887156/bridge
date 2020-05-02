@@ -6,9 +6,11 @@
 #import "BPVersionModel.h"
 #import <MJExtension/MJExtension.h>
 #import "BPAdHandler.h"
+#import <sys/utsname.h>
 @interface BridgePlugin()
 @property (nonatomic, assign) FlutterResult saveImageResult;
 @property (nonatomic, strong) BPAdHandler *adHandler;
+@property (nonatomic, strong) NSDictionary *deviceInfo;
 @end
 @implementation BridgePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -25,13 +27,19 @@
     return self;
 }
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    if ([@"getVersionCode" isEqualToString:call.method]) {
+    if([@"getDeviceInfo" isEqualToString:call.method]) {
+        if (self.deviceInfo) {
+            result(self.deviceInfo);
+        }
+    } else if ([@"getVersionCode" isEqualToString:call.method]) {
         NSNumber *version = @([self _getVersion]);
         result(version);
     } else if ([@"getVersionName" isEqualToString:call.method]) {
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-        NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-        result(appVersion);
+        NSString *appVersion = [self _getVersionName];
+        if (appVersion.length) {
+            result(appVersion);
+        }
+
     } else if ([@"encrypt" isEqualToString:call.method]) {
         NSString *key = call.arguments[@"key"];
         NSString *target = call.arguments[@"target"];
@@ -45,19 +53,10 @@
             result([GTMBase64 decryptWithText:target forKey:key]);
         }
     } else if ([@"getUDID" isEqualToString:call.method]) {
-        NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
-    
-        NSString *udid = [SAMKeychain passwordForService:bundleIdentifier account:bundleIdentifier];
-        if (!udid.length) {
-            udid = [UIDevice currentDevice].identifierForVendor.UUIDString;
-            SAMKeychainQuery *query = [[SAMKeychainQuery alloc] init];
-            query.account = bundleIdentifier;
-            query.password = udid;
-            query.service = bundleIdentifier;
-            query.synchronizationMode = SAMKeychainQuerySynchronizationModeNo;
-            [query save:nil];
+        NSString *udid = [self _getUDID];
+        if (udid.length) {
+            result(udid);
         }
-        result(udid);
         
     } else if ([@"isSimulator" isEqualToString:call.method]) {
         
@@ -149,5 +148,52 @@
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
     return appVersion.integerValue;
+}
+- (NSString *)_getVersionName {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    return appVersion;
+}
+- (NSString *)_getUDID {
+    NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
+    NSString *udid = [SAMKeychain passwordForService:bundleIdentifier account:bundleIdentifier];
+    if (!udid.length) {
+        udid = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        SAMKeychainQuery *query = [[SAMKeychainQuery alloc] init];
+        query.account = bundleIdentifier;
+        query.password = udid;
+        query.service = bundleIdentifier;
+        query.synchronizationMode = SAMKeychainQuerySynchronizationModeNo;
+        [query save:nil];
+    }
+    return udid;
+}
+- (NSDictionary *)deviceInfo
+{
+    if (!_deviceInfo) {
+        NSMutableDictionary *deviceInfo = [NSMutableDictionary dictionary];
+        [deviceInfo setValue:@"IOS" forKey:@"plat"];
+        [deviceInfo setValue:@([self _getVersion]).stringValue forKey:@"versionCode"];
+        [deviceInfo setValue:[self _getVersionName] forKey:@"versionName"];
+        NSString *udid = [self _getUDID];
+        [deviceInfo setValue:udid forKey:@"device_id"];
+        [deviceInfo setValue:udid forKey:@"mac"];
+        NSString *systemVersion = [NSString stringWithFormat:@"iOS:%@",[UIDevice currentDevice].systemVersion];
+        [deviceInfo setValue:systemVersion forKey:@"os_version"];
+        struct utsname systemInfo;
+        uname(&systemInfo);
+        NSString *model = [NSString stringWithCString: systemInfo.machine encoding:NSASCIIStringEncoding];
+        [deviceInfo setValue:[NSString stringWithFormat:@"iOS:%@",model] forKey:@"dev_model"];
+        UIScreen *screen = [UIScreen mainScreen];
+        CGFloat screenScale = screen.scale;
+           // 横向分辨率
+        NSInteger screenX = screen.bounds.size.width * screenScale;
+           // 竖直分辨率
+        NSInteger screenY = screen.bounds.size.height * screenScale;
+        NSString *resolution = [NSString stringWithFormat:@"%@*%@",@(screenX),@(screenY)];
+        [deviceInfo setValue:resolution forKey:@"resolution"];
+        _deviceInfo = deviceInfo.copy;
+    }
+    return _deviceInfo;
 }
 @end
