@@ -107,15 +107,18 @@ public class DeviceTools {
         try {
             TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             if (manager == null) {
-                return null;
+                return "";
             }
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("aIMEI:");
+
             String id = manager.getDeviceId();
             if (!isEmpty(id)) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("aIMEI:");
                 stringBuilder.append(id);
+                return stringBuilder.toString();
             }
-            return stringBuilder.toString();
+            return "";
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,16 +135,19 @@ public class DeviceTools {
         try {
             TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             if (manager == null) {
-                return null;
+                return "";
             }
-            StringBuilder stringBuilder = new StringBuilder();
-            // 渠道标志
-            stringBuilder.append("asn");//android
+
             String sn = manager.getSimSerialNumber();
             if (!isEmpty(sn)) {
+                StringBuilder stringBuilder = new StringBuilder();
+                // 渠道标志
+                stringBuilder.append("asn");//android
                 stringBuilder.append(sn);
+                return stringBuilder.toString();
             }
-            return stringBuilder.toString();
+            return "";
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -199,12 +205,14 @@ public class DeviceTools {
             if (macString.equals("02:00:00:00:00:00") || isEmpty(macString)) {
                 macString = getLocalMacAddress(context);
             }
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("amac");
+
             if (!isEmpty(macString)) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("amac");
                 stringBuilder.append(macString);
+                return stringBuilder.toString();
             }
-            return stringBuilder.toString();
+            return "";
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -225,12 +233,14 @@ public class DeviceTools {
     public static String getBluethId(Context context) {
         BluetoothAdapter mBlueth= BluetoothAdapter.getDefaultAdapter();
         String id = mBlueth.getAddress();
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("abluethId");
+
         if (!isEmpty(id)) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("abluethId");
             stringBuilder.append(id);
+            return stringBuilder.toString();
         }
-        return stringBuilder.toString();
+        return "";
     }
     private static boolean isEmpty(String str) {
         return str == null || "".equals(str.trim());
