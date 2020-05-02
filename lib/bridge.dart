@@ -63,6 +63,10 @@ class Bridge {
         });
     return result;
   }
+  static Future<Map> get deviceInfo async {
+    final info = await _channel.invokeMethod('getDeviceInfo');
+    return info;
+  }
 //  /*
 //  * 开屏广告准备
 //  * */
