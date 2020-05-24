@@ -3,6 +3,7 @@ package com.lajiaoyang.app.bridge;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -58,7 +59,11 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
         PackageManager packageManager = context.getPackageManager();
         PackageInfo packageInfo = packageManager.getPackageInfo(
                 context.getPackageName(), 0);
-        versionCode = packageInfo.versionCode;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+          versionCode = (int)packageInfo.getLongVersionCode();
+        } else {
+          versionCode = packageInfo.versionCode;
+        }
         result.success(versionCode);
       } catch (Exception e) {
         e.printStackTrace();
