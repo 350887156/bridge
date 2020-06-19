@@ -1,10 +1,6 @@
 package com.lajiaoyang.app.bridge;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-
 import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
@@ -13,9 +9,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import com.umeng.commonsdk.UMConfigure;
-import org.lzh.framework.updatepluginlib.model.Update;
 
-import java.util.Map;
 
 /** BridgePlugin */
 public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
@@ -44,43 +38,7 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getDeviceInfo")) {
-      try {
-         Map deviceInfo = DeviceTools.getDeviceInfo(context);
-         if (deviceInfo != null) {
-           result.success(deviceInfo);
-         }
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    } else if (call.method.equals("getVersionCode")) {
-      int versionCode = 0;
-      try {
-        PackageManager packageManager = context.getPackageManager();
-        PackageInfo packageInfo = packageManager.getPackageInfo(
-                context.getPackageName(), 0);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-          versionCode = (int)packageInfo.getLongVersionCode();
-        } else {
-          versionCode = packageInfo.versionCode;
-        }
-        result.success(versionCode);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-
-    } else if (call.method.equals("getVersionName")) {
-      String versionName = "";
-      try {
-        PackageManager packageManager = context.getPackageManager();
-        PackageInfo packageInfo = packageManager.getPackageInfo(
-                context.getPackageName(), 0);
-        versionName = packageInfo.versionName;
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-      result.success(versionName);
-    } else if ("encrypt".equals(call.method)) {
+    if ("encrypt".equals(call.method)) {
       String key = call.argument("key");
       String target = call.argument("target");
       try {
@@ -116,19 +74,6 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
 
     } else if (call.method.startsWith("UMConfigure")) {
       handleUMConfigure(call,result);
-    } else if ("checkUpdate".equals(call.method)) {
-      String url = call.argument("url");
-      Map parameter = call.argument("parameter");
-      if (url.startsWith("http")) {
-        try {
-          UpdateManager updateManager = UpdateManager.getInstance();
-          updateManager.setup(url,parameter).startCheck();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      } else {
-        result.error("-1","url error","url error");
-      }
     } else {
       result.notImplemented();
     }

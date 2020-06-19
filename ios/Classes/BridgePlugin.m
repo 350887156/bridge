@@ -2,14 +2,9 @@
 #import "GTMBase64+Extension.h"
 #import "SAMKeychain.h"
 //#import <UMCommon/UMCommon.h>
-#import "BPNetworkManager.h"
-#import "BPVersionModel.h"
-#import <MJExtension/MJExtension.h>
-#import "BPAdHandler.h"
 #import <sys/utsname.h>
 @interface BridgePlugin()
 @property (nonatomic, assign) FlutterResult saveImageResult;
-@property (nonatomic, strong) BPAdHandler *adHandler;
 @property (nonatomic, strong) NSDictionary *deviceInfo;
 @end
 @implementation BridgePlugin
@@ -17,30 +12,11 @@
   FlutterMethodChannel* channel = [FlutterMethodChannel
       methodChannelWithName:@"bridge"
             binaryMessenger:[registrar messenger]];
-  BridgePlugin* instance = [[BridgePlugin alloc] initWithRegistrar:registrar methodChannel:channel];
+  BridgePlugin* instance = [[BridgePlugin alloc] init];
   [registrar addMethodCallDelegate:instance channel:channel];
 }
-- (instancetype)initWithRegistrar:(NSObject <FlutterPluginRegistrar> *)registrar methodChannel:(FlutterMethodChannel *)flutterMethodChannel {
-    if (self = [super init]) {
-        self.adHandler = [[BPAdHandler alloc] initWithMethodChannel:flutterMethodChannel];
-    }
-    return self;
-}
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    if([@"getDeviceInfo" isEqualToString:call.method]) {
-        if (self.deviceInfo) {
-            result(self.deviceInfo);
-        }
-    } else if ([@"getVersionCode" isEqualToString:call.method]) {
-        NSNumber *version = @([self _getVersion]);
-        result(version);
-    } else if ([@"getVersionName" isEqualToString:call.method]) {
-        NSString *appVersion = [self _getVersionName];
-        if (appVersion.length) {
-            result(appVersion);
-        }
-
-    } else if ([@"encrypt" isEqualToString:call.method]) {
+    if ([@"encrypt" isEqualToString:call.method]) {
         NSString *key = call.arguments[@"key"];
         NSString *target = call.arguments[@"target"];
         if ([target isKindOfClass:[NSString class]] && target.length && [key isKindOfClass:[NSString class]] && key.length) {
@@ -65,26 +41,6 @@
         
     } else if ([call.method hasPrefix:@"UMConfigure"]) {
         [self _handleUMeng:call result:result];
-    } else if ([@"checkUpdate" isEqualToString:call.method]) {
-        NSDictionary *parameter = call.arguments[@"parameter"];
-        NSString *url = call.arguments[@"url"];
-        NSLog(@"请求");
-        [BPNetworkManager postWithUrl:url parameter:parameter complationBlock:^(NSDictionary * _Nullable response, NSError * _Nullable error) {
-            if (error) {
-                result(@(NO));
-            } else {
-                NSDictionary *data = response[@"data"];
-                BPVersionModel *model = [BPVersionModel mj_objectWithKeyValues:data];
-                if ([model isKindOfClass:[BPVersionModel class]]) {
-                    [self _showUpdateAlertController:model result:result];
-                } else {
-                    result(@(NO));
-                }
-            }
-        }];
-    } else if ([call.method hasPrefix:@"advertisement"]) {
-//        [self.adHandler handleMethodCall:call result:result];
-        result(FlutterMethodNotImplemented);
     }
     else {
         result(FlutterMethodNotImplemented);
@@ -94,43 +50,6 @@
     if (self.saveImageResult) {
         self.saveImageResult(@(error == nil));
     }
-}
-- (void)_showUpdateAlertController:(BPVersionModel *)model result:(FlutterResult)result {
-    NSInteger version = [self _getVersion];
-    if (model.versionCode <= version) {
-        result(@(NO));
-        return;
-    }
-    UIApplication *application = [UIApplication sharedApplication];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您有新的版本需要更新" message:model.desc preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSURL *url = [NSURL URLWithString:model.apkUrl];
-        if (![url isKindOfClass:[NSURL class]]) {
-            result(@(NO));
-            return;
-        }
-        if (![application canOpenURL:url]) {
-            result(@(NO));
-            return;
-        }
-        if (@available(iOS 10.0, *)) {
-            [application openURL:url options:@{} completionHandler:nil];
-        } else {
-            [application openURL:url];
-        }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            exit(0);
-        });
-        result(@(YES));
-    }];
-    if (model.type == 0) {
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [alert dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [alert addAction:cancel];
-    }
-    [alert addAction:action];
-    [application.keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 - (void)_handleUMeng:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"UMConfigure.init" isEqualToString:call.method]) {
@@ -143,16 +62,6 @@
         result(FlutterMethodNotImplemented);
     }
     
-}
-- (NSInteger)_getVersion {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
-    return appVersion.integerValue;
-}
-- (NSString *)_getVersionName {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    return appVersion;
 }
 - (NSString *)_getUDID {
     NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
@@ -168,32 +77,5 @@
     }
     return udid;
 }
-- (NSDictionary *)deviceInfo
-{
-    if (!_deviceInfo) {
-        NSMutableDictionary *deviceInfo = [NSMutableDictionary dictionary];
-        [deviceInfo setValue:@"IOS" forKey:@"plat"];
-        [deviceInfo setValue:@([self _getVersion]).stringValue forKey:@"versionCode"];
-        [deviceInfo setValue:[self _getVersionName] forKey:@"versionName"];
-        NSString *udid = [self _getUDID];
-        [deviceInfo setValue:udid forKey:@"device_id"];
-        [deviceInfo setValue:udid forKey:@"mac"];
-        NSString *systemVersion = [NSString stringWithFormat:@"iOS:%@",[UIDevice currentDevice].systemVersion];
-        [deviceInfo setValue:systemVersion forKey:@"os_version"];
-        struct utsname systemInfo;
-        uname(&systemInfo);
-        NSString *model = [NSString stringWithCString: systemInfo.machine encoding:NSASCIIStringEncoding];
-        [deviceInfo setValue:[NSString stringWithFormat:@"iOS:%@",model] forKey:@"dev_model"];
-        UIScreen *screen = [UIScreen mainScreen];
-        CGFloat screenScale = screen.scale;
-           // 横向分辨率
-        NSInteger screenX = screen.bounds.size.width * screenScale;
-           // 竖直分辨率
-        NSInteger screenY = screen.bounds.size.height * screenScale;
-        NSString *resolution = [NSString stringWithFormat:@"%@*%@",@(screenX),@(screenY)];
-        [deviceInfo setValue:resolution forKey:@"resolution"];
-        _deviceInfo = deviceInfo.copy;
-    }
-    return _deviceInfo;
-}
+
 @end

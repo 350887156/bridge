@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:flutter/services.dart';
 import 'package:bridge/bridge.dart';
-import 'dart:io';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -16,19 +13,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    print('initState');
-    checkUpdate();
   }
-  @override
-  void reassemble() {
-    // TODO: implement reassemble
-    super.reassemble();
-    checkUpdate();
-  }
-  void checkUpdate() async {
-    final deviceInfo = await Bridge.deviceInfo;
-    print(deviceInfo);
-  }
+
 
     // Platform messages are asynchronous, so we initialize in an async method.
 

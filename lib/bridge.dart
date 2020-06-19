@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:typed_data';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class Bridge {
@@ -43,63 +41,4 @@ class Bridge {
   static enabledUmengLog() async {
     await _channel.invokeMethod('UMConfigure.log');
   }
-  static Future<String> get versionName async {
-    final String version = await _channel.invokeMethod('getVersionName');
-    return version;
-  }
-  static Future<int> get versionCode async {
-    final int version = await _channel.invokeMethod('getVersionCode');
-    return version;
-  }
-  /*
-  * App检查更新
-  * */
-  static Future<bool> checkUpdate({String url,Map<String,dynamic> parameter,Map<String,dynamic> resource}) async {
-    bool result = await _channel.invokeMethod('checkUpdate',
-        {
-          'url':url,
-          'parameter':parameter,
-          'resource':resource
-        });
-    return result;
-  }
-  static Future<Map> get deviceInfo async {
-    final info = await _channel.invokeMethod('getDeviceInfo');
-    return info;
-  }
-//  /*
-//  * 开屏广告准备
-//  * */
-//  static Future<bool> preloadSplash({@required String appId,@required String placementId}) async {
-//    bool result = await _channel.invokeMethod('advertisement.preloadSplash',
-//        {
-//          'appId':appId,
-//          'placementId':placementId,
-//        });
-//    return result;
-//  }
-//  /*
-//  * 展示开屏广告
-//  * */
-//  static Future<bool> showSplashAd({@required String appId,@required String placementId,@required String backgroundImage}) async {
-//    print('start');
-//    bool result = await _channel.invokeMethod('advertisement.aplashAd',
-//        {
-//          'appId':appId,
-//          'placementId':placementId,
-//          'backgroundImage':backgroundImage
-//        });
-//    return result;
-//  }
-//  /*
-//  * 播放激励视频
-//  * */
-//  static Future<bool> showRewardVideoAd({@required String appId,@required String placementId}) async {
-//    bool result = await _channel.invokeMethod('advertisement.rewardVideoAd',
-//        {
-//          'appId':appId,
-//          'placementId':placementId,
-//        });
-//    return result;
-//  }
 }
