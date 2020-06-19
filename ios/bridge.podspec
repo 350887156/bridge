@@ -18,10 +18,10 @@ Flutter Bridge.
   s.dependency 'Flutter'
   s.dependency 'SAMKeychain'
   s.dependency 'GTMBase64'
-  s.dependency 'UMCCommon'
-  s.dependency 'UMCAnalytics'
+#  s.dependency 'UMCCommon'
+#  s.dependency 'UMCAnalytics'
   s.dependency 'AFNetworking'
-#  s.dependency 'GDTMobSDK'
+  s.static_framework = true
   s.dependency 'MJExtension'
   s.dependency 'pop'
   s.dependency 'Masonry'

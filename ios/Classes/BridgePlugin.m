@@ -1,7 +1,7 @@
 #import "BridgePlugin.h"
 #import "GTMBase64+Extension.h"
 #import "SAMKeychain.h"
-#import <UMCommon/UMCommon.h>
+//#import <UMCommon/UMCommon.h>
 #import "BPNetworkManager.h"
 #import "BPVersionModel.h"
 #import <MJExtension/MJExtension.h>
@@ -134,10 +134,10 @@
 }
 - (void)_handleUMeng:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"UMConfigure.init" isEqualToString:call.method]) {
-        NSString *appKey = call.arguments[@"iOSAppKey"];
-        [UMConfigure initWithAppkey:appKey channel:@"App Store"];
+//        NSString *appKey = call.arguments[@"iOSAppKey"];
+//        [UMConfigure initWithAppkey:appKey channel:@"App Store"];
     } else if ([@"UMConfigure.log" isEqualToString:call.method]) {
-        [UMConfigure setLogEnabled:YES];
+//        [UMConfigure setLogEnabled:YES];
     }
     else {
         result(FlutterMethodNotImplemented);
