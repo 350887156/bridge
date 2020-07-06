@@ -8,6 +8,8 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
 
@@ -85,7 +87,15 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
       UMConfigure.init(context,appKey,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
     } else if("UMConfigure.log".equals(call.method)) {
       UMConfigure.setLogEnabled(true);
-    } else {
+    }
+     else if ("UMConfigure.onPageStart".equals(call.method)) {
+       String pageName = call.argument("pageName");
+       MobclickAgent.onPageStart(pageName);
+    } else if ("UMConfigure.onPageEnd".equals(call.method)) {
+      String pageName = call.argument("pageName");
+      MobclickAgent.onPageEnd(pageName);
+    }
+    else {
       result.notImplemented();
     }
 

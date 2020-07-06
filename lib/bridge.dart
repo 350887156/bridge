@@ -41,4 +41,14 @@ class Bridge {
   static enabledUmengLog() async {
     await _channel.invokeMethod('UMConfigure.log');
   }
+  static onPageStart(String pageName) async {
+    await _channel.invokeMethod('UMConfigure.onPageStart',{
+      'pageName':pageName,
+    });
+  }
+  static onPageEnd(String pageName) async {
+    await _channel.invokeMethod('UMConfigure.onPageEnd',{
+      'pageName':pageName,
+    });
+  }
 }
