@@ -1,7 +1,8 @@
 #import "BridgePlugin.h"
 #import "GTMBase64+Extension.h"
 #import "SAMKeychain.h"
-//#import <UMCommon/UMCommon.h>
+#import <UMCommon/UMCommon.h>
+#import <UMAnalytics/MobClick.h>
 #import <sys/utsname.h>
 @interface BridgePlugin()
 @property (nonatomic, assign) FlutterResult saveImageResult;
@@ -53,12 +54,19 @@
 }
 - (void)_handleUMeng:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"UMConfigure.init" isEqualToString:call.method]) {
-//        NSString *appKey = call.arguments[@"iOSAppKey"];
-//        [UMConfigure initWithAppkey:appKey channel:@"App Store"];
+        NSString *appKey = call.arguments[@"iOSAppKey"];
+        [UMConfigure initWithAppkey:appKey channel:@"App Store"];
     } else if ([@"UMConfigure.log" isEqualToString:call.method]) {
-//        [UMConfigure setLogEnabled:YES];
-    }
-    else {
+        [UMConfigure setLogEnabled:YES];
+    } else if ([@"UMConfigure.onPageStart" isEqualToString:call.method]) {
+        NSString *pageName = call.arguments[@"pageName"];
+        [MobClick beginLogPageView:pageName];
+    } else if ([@"UMConfigure.onPageEnd" isEqualToString:call.method]) {
+        NSString *pageName = call.arguments[@"pageName"];
+        [MobClick endLogPageView:pageName];
+    } else if ([@"UMConfigure.pageManual" isEqualToString:call.method]) {
+        [MobClick setAutoPageEnabled:NO];
+    } else {
         result(FlutterMethodNotImplemented);
     }
     

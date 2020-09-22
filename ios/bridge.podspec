@@ -18,7 +18,8 @@ Flutter Bridge.
   s.dependency 'Flutter'
   s.dependency 'SAMKeychain'
   s.dependency 'GTMBase64'
-
+  s.dependency 'UMCCommon' ,  '2.1.4'
+  s.dependency 'UMCAnalytics', '6.1.0'
   s.platform = :ios, '8.0'
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.

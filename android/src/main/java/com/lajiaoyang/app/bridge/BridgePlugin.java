@@ -85,15 +85,22 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
     if ("UMConfigure.init".equals(call.method)) {
       String appKey = call.argument("androidAppKey");
       UMConfigure.init(context,appKey,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
+      android.util.Log.i("bridge_UMLog", "init");
     } else if("UMConfigure.log".equals(call.method)) {
       UMConfigure.setLogEnabled(true);
+      android.util.Log.i("bridge_UMLog", "log");
     }
      else if ("UMConfigure.onPageStart".equals(call.method)) {
        String pageName = call.argument("pageName");
        MobclickAgent.onPageStart(pageName);
+      android.util.Log.i("bridge_UMLog", "onPageStart");
     } else if ("UMConfigure.onPageEnd".equals(call.method)) {
       String pageName = call.argument("pageName");
       MobclickAgent.onPageEnd(pageName);
+      android.util.Log.i("bridge_UMLog", "onPageEnd");
+    } else if ("UMConfigure.pageManual".equals(call.method)) {
+      MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.LEGACY_MANUAL);
+      android.util.Log.i("bridge_UMLog", "pageManual");
     }
     else {
       result.notImplemented();
