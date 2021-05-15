@@ -8,30 +8,46 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import com.nirvana.tools.core.AppUtils;
+import com.lajiaoyang.app.bridge.CustomUIUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
-
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.mobile.auth.gatewayauth.AuthRegisterViewConfig;
+import com.mobile.auth.gatewayauth.AuthRegisterXmlConfig;
+import com.mobile.auth.gatewayauth.AuthUIConfig;
+import com.mobile.auth.gatewayauth.AuthUIControlClickListener;
+import com.mobile.auth.gatewayauth.CustomInterface;
+import com.mobile.auth.gatewayauth.PhoneNumberAuthHelper;
+import com.mobile.auth.gatewayauth.PreLoginResultListener;
+import com.mobile.auth.gatewayauth.TokenResultListener;
+import com.mobile.auth.gatewayauth.model.TokenRet;
+import com.mobile.auth.gatewayauth.ui.AbstractPnsViewDelegate;
 
 /** BridgePlugin */
 public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
-  private  static  Context context;
+  private  PhoneNumberAuthHelper authHelper;
+  private BasicMessageChannel basicMessageChannel;
+  private TokenResultListener mTokenListener;
+  private static Activity mActivity;
+  private static Context mContext;
+  private int mScreenWidthDp;
+  private int mScreenHeightDp;
+  private FlutterAssets flutterAssets;
+  
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    context = flutterPluginBinding.getApplicationContext();
     final MethodChannel channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "bridge");
     channel.setMethodCallHandler(new BridgePlugin());
+    mContext = flutterPluginBinding.getApplicationContext();
+    flutterAssets = flutterPluginBinding.getFlutterAssets();
+    basicMessageChannel =  new BasicMessageChannel(flutterPluginBinding.getBinaryMessenger(),"com.lajiaoyang.ali_auth.BasicMessageChannel", StandardMessageCodec.INSTANCE);
   }
-
-  // This static function is optional and equivalent to onAttachedToEngine. It supports the old
-  // pre-Flutter-1.12 Android projects. You are encouraged to continue supporting
-  // plugin registration via this function while apps migrate to use the new Android APIs
-  // post-flutter-1.12 via https://flutter.dev/go/android-project-migration.
-  //
-  // It is encouraged to share logic between onAttachedToEngine and registerWith to keep
-  // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
-  // depending on the user's project. onAttachedToEngine or registerWith must both be defined
-  // in the same class.
   public static void registerWith(Registrar registrar) {
 
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "bridge");
@@ -40,44 +56,181 @@ public class BridgePlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if ("encrypt".equals(call.method)) {
-      String key = call.argument("key");
-      String target = call.argument("target");
-      try {
-        String decrypt = AESCryptor.encrypt(target,key);
-        if (decrypt != null) {
-          result.success(decrypt);
-        }
-        
-      } catch(Exception e) {
-        e.printStackTrace();
-      }
-    } else if ("decrypt".equals(call.method)) {
-      String key = call.argument("key");
-      String target = call.argument("target");
-      try {
-        String decrypt = AESCryptor.decrypt(target,key);
-        if (decrypt != null) {
-          result.success(decrypt);
-        }
-      } catch(Exception e) {
-        e.printStackTrace();
-      }
-    } else if ("getUDID".equals(call.method)) {
-      String udid = DeviceTools.getDeviceId(context);;
-      if (udid == null) {
-        result.error("500","getUDID is Null","getUDID is Null");
-      } else {
-        result.success(udid);
-      }
-    } else if ("isSimulator".equals(call.method)) {
-      boolean isSimulator = SimulatorUtil.isSimulator(context);
-      result.success(isSimulator);
+    
 
-    } else if (call.method.startsWith("UMConfigure")) {
+    if (call.method.startsWith("UMConfigure")) {
       handleUMConfigure(call,result);
     } else {
-      result.notImplemented();
+      switch (call.method) {
+      case "init_ali_auth":
+      {
+        mTokenListener = new TokenResultListener() {
+          @Override
+          public void onTokenSuccess(final String s) {
+            mActivity.runOnUiThread(new Runnable() {
+
+              @Override
+              public void run() {
+                TokenRet tokenRet = null;
+                try {
+                  tokenRet = JSON.parseObject(s, TokenRet.class);
+                } catch (Exception e) {
+                  e.printStackTrace();
+                }
+                resultData(tokenRet);
+              }
+            });
+          }
+
+          @Override
+          public void onTokenFailed(final String s) {
+            mActivity.runOnUiThread(new Runnable() {
+
+              @Override
+              public void run() {
+                TokenRet tokenRet = null;
+                try {
+                  tokenRet = JSON.parseObject(s, TokenRet.class);
+                } catch (Exception e) {
+                  e.printStackTrace();
+                }
+                resultData(tokenRet);
+              }
+            });
+          }
+        };
+        authHelper = PhoneNumberAuthHelper.getInstance(mContext,mTokenListener);
+        String appKey = call.argument("appKey");
+        authHelper.setAuthSDKInfo(appKey);
+      }
+        break;
+      case "pre":
+        authHelper.accelerateLoginPage(5000, new PreLoginResultListener() {
+          @Override
+          public void onTokenSuccess(final String vendor) {
+            mActivity.runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("code", vendor);
+                jsonObject.put("msg", "预取号成功！");
+                basicMessageChannel.send(jsonObject);
+              }
+            });
+          }
+
+          @Override
+          public void onTokenFailed(final String vendor, final String ret) {
+            mActivity.runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("code", ret);
+                jsonObject.put("msg", "预取号失败");
+                basicMessageChannel.send(jsonObject);
+              }
+            });
+          }
+        });
+        break;
+      case "login":
+        login(call);
+        break;
+
+      case "debugLogin":
+        login(call);
+        break;
+
+      case "checkEnvAvailable":
+        authHelper.checkEnvAvailable(2);
+        break;
+      case "accelerateVerify":
+        authHelper.accelerateVerify(5000, new PreLoginResultListener() {
+          @Override
+          public void onTokenSuccess(final String vendor) {
+            mActivity.runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("code", vendor);
+                jsonObject.put("msg", "加速获取本机号码成功！");
+                basicMessageChannel.send(jsonObject);
+              }
+            });
+          }
+
+          @Override
+          public void onTokenFailed(final String vendor, String errorMsg) {
+            mActivity.runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("code", vendor);
+                jsonObject.put("msg", "加速获取本机号码失败！");
+                basicMessageChannel.send(jsonObject);
+              }
+            });
+          }
+        });
+        break;
+
+      case "checkDeviceCellularDataEnable":
+        result.notImplemented();
+        break;
+      case "cancelLogin":
+        authHelper.quitLoginPage();
+        result.success(true);
+        break;
+      case "getCurrentCarrierName":
+        result.success(authHelper.getCurrentCarrierName());
+        break;
+      case "encrypt":
+        String key = call.argument("key");
+        String target = call.argument("target");
+        try {
+          String decrypt = AESCryptor.encrypt(target,key);
+          if (decrypt != null) {
+            result.success(decrypt);
+          }
+          
+        } catch(Exception e) {
+          e.printStackTrace();
+        }
+        break;
+      case "decrypt":
+      {
+        String key = call.argument("key");
+        String target = call.argument("target");
+        try {
+          String decrypt = AESCryptor.decrypt(target,key);
+          if (decrypt != null) {
+            result.success(decrypt);
+          }
+        } catch(Exception e) {
+          e.printStackTrace();
+        }
+      }
+        break;
+      case "getUDID":
+      {
+        String udid = DeviceTools.getDeviceId(context);;
+        if (udid == null) {
+          result.error("500","getUDID is Null","getUDID is Null");
+        } else {
+          result.success(udid);
+        }
+      }
+        break;
+      case "isSimulator":
+      {
+        boolean isSimulator = SimulatorUtil.isSimulator(context);
+        result.success(isSimulator);
+      }
+        break;
+      default:
+        result.notImplemented();
+        break;
+    }
     }
   }
   /// 友盟 SDK处理

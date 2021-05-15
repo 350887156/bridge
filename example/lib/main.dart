@@ -1,5 +1,13 @@
+/*
+ * @Author: your name
+ * @Date: 2021-04-29 11:23:28
+ * @LastEditTime: 2021-05-14 18:33:18
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /example/lib/main.dart
+ */
 import 'package:flutter/material.dart';
-import 'package:bridge/bridge.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -15,9 +23,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-
-    // Platform messages are asynchronous, so we initialize in an async method.
-
+  // Platform messages are asynchronous, so we initialize in an async method.
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('isSimulator '),
         ),
         body: Center(
-          child: Text(isSimulator == true ? '模拟器' :'真真是机'),
+          child: Text(isSimulator == true ? '模拟器' : '真真是机'),
         ),
       ),
     );

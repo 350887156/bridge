@@ -36,11 +36,16 @@ android {
     }
 }
 dependencies {
-    implementation files('libs/bcprov-jdk16-1.45.jar')
-    compileOnly files('libs/commons-codec-1.1.jar')
-    implementation 'com.github.yjfnypeu:UpdatePlugin:3.0.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    
     api  'com.umeng.umsdk:analytics:8.0.0'
     api  'com.umeng.umsdk:common:2.0.0'
     api 'com.google.code.gson:gson:2.8.5'
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.alibaba:fastjson:1.2.61'
+    // implementation 'com.github.yjfnypeu:UpdatePlugin:3.0.1'
 
 }
